@@ -11,6 +11,7 @@ public class RejectRfpRowMapper implements RowMapper<RejectRfp> {
 	public RejectRfp mapRow(ResultSet rs, int rowNum) throws SQLException {
 		// TODO Auto-generated method stub
 		RejectRfp rejectrfp = new RejectRfp();
+		System.out.println(rejectrfp);
 		rejectrfp.setRfpr_enqr_id(rs.getInt("rfpr_enqr_id"));
 
 		return rejectrfp;

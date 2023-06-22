@@ -25,7 +25,8 @@ public class TrackerEnquiryDaoImp implements TrackerEnquiryDao {
 	private final String enquiryreject = "select  rd.e_id  from tracker_enquiries te join rejectedenquiries rd on te.enqr_id=rd.e_id ";
 
 	private final String convertrfp = "select Distinct te.enqr_id  from tracker_enquiries te where enqr_status='ENQR_COMPLETED'";
-	private final String rfpreject = "select rfpr_enqr_id  from  tracker_rfp  where rfpr_id  in  (select rej_rfpr_id from rejected_rfps)";
+
+	private final String rfpreject = "select rfpr_enqr_id  from  tracker_rfp  where rfpr_id not in  (select rej_rfpr_id from rejected_rfps)";
 
 	@Override
 	public List<TrackerEnquiry> getEnquiryById() {

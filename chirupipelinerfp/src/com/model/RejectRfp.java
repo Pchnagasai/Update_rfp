@@ -11,4 +11,9 @@ public class RejectRfp {
 		this.rfprenqrid = rfprenqrid;
 	}
 
+	@Override
+	public String toString() {
+		return "RejectRfp [rfprenqrid=" + rfprenqrid + "]";
+	}
+
 }
