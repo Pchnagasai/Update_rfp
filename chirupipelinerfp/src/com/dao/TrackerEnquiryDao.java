@@ -19,4 +19,6 @@ public interface TrackerEnquiryDao {
 
 	List<RejectRfp> getrfpreject();
 
+	List<RejectRfp> getRfpApprove();
+
 }

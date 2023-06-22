@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.dao.TrackerEnquiryDao;
+import com.model.MainModelForm;
 import com.model.RejectEnquiry;
 import com.model.RejectRfp;
 import com.model.TrackerEnquiry;
@@ -18,6 +19,8 @@ import com.model.TrackerEnquiry;
 public class TrackerEnquiryController {
 	@Autowired
 	private TrackerEnquiryDao trackerenquirydao;
+	@Autowired
+	private MainModelForm mainmodelform;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String getEnquiryid(Model model) {
@@ -54,6 +57,20 @@ public class TrackerEnquiryController {
 			System.out.println(x);
 		}
 		model.addAttribute("rfpreject", rfpreject);
+
+		List<RejectRfp> rfpapprove = trackerenquirydao.getRfpApprove();
+		for (RejectRfp x : rfpapprove) {
+			System.out.println(x);
+		}
+		model.addAttribute("rfpapprove", rfpapprove);
+
+		mainmodelform.setTrackerenquiry(enquiry);
+		mainmodelform.setRejectenjuiry(reject);
+		mainmodelform.setTrackerenquiry(approve);
+		mainmodelform.setTrackerenquiry(converttorfo);
+		mainmodelform.setRejectrfp(rfpreject);
+		mainmodelform.setRejectrfp(rfpapprove);
+		model.addAttribute("viewform", mainmodelform);
 
 		return "Enquirystage";
 
